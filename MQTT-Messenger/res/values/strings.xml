@@ -8,6 +8,7 @@
         <item>test.mosquitto.org</item>
         <item>honeybeez.in</item>
         <item>192.168.1.3</item>
+        <item>192.168.1.2</item>
     </string-array>
     <string name="server_prompt">Choose a Server..</string>
 

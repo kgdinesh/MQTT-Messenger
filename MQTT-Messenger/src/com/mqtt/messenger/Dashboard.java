@@ -96,7 +96,7 @@ public class Dashboard extends Activity {
 			messageView.setText("");
 			client = (MqttClient) MqttClient.createMqttClient("tcp://"+server+":"+port, null);
 			client.registerSimpleHandler(new MessageHandler());
-			client.connect("HM" + android_id, true, (short) 240);
+			client.connect("HM" + android_id, true, (short) 240);			
 			return true;
 		} catch (MqttException e) {
 			e.printStackTrace();
@@ -129,9 +129,9 @@ public class Dashboard extends Activity {
 				{
 					do {// pause for 5 seconds and try again;
 						Log.v("HelloMQTT",
-								"sleeping for 10 seconds before trying to reconnect");
+								"sleeping for 5 seconds before trying to reconnect");
 						try {
-							Thread.sleep(10 * 1000);
+							Thread.sleep(5 * 1000);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -140,9 +140,9 @@ public class Dashboard extends Activity {
 					System.err.println("reconnected");
 				}
 			});
+			t.start();
 		}
 	}
-	
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
