@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">" />
+    <item android:id="@+id/startitem1"
+        android:title="Quit"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+         />
+        <item android:id="@+id/startitem2"
+        android:title="About"
+        android:icon="@android:drawable/ic_menu_info_details"
+         />
+</menu>
