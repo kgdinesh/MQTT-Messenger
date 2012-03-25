@@ -1,20 +1,23 @@
 package com.mqtt.messenger;
 
 import android.app.Activity;
-
-
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings.Secure;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +37,7 @@ public class Dashboard extends Activity {
 	private ScrollView scroller;
 	private AlertDialog alert;
 	private ProgressDialog pd;
+	EditText input;
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	
@@ -53,6 +57,7 @@ public class Dashboard extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("\nMQTT Messenger V1.0\n");
 		alert = builder.create();
+
 		
 		 pd = ProgressDialog.show(this, "Connecting", "Please wait..", true,false);
 		 new Thread() { 
@@ -143,6 +148,7 @@ public class Dashboard extends Activity {
 			t.start();
 		}
 	}
+	
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -153,13 +159,13 @@ public class Dashboard extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case R.id.dashitem1:	try {
-        						client.publish("NITTrichy", "This is a Demo Message from Android Application".getBytes() ,1, false);
-        						} catch ( MqttException e){
-        							Toast.makeText(this, "Publish Failed!", Toast.LENGTH_SHORT).show();
-        						}
-        						Toast.makeText(this, "Publish Success!", Toast.LENGTH_SHORT).show();
-        						break;
+        case R.id.dashitem1:		try {
+	        								client.publish("NITTrichy","Test Message".getBytes() ,1, false);
+	        						} catch ( MqttException e){
+	        						Toast.makeText(this, "Publish Failed!", Toast.LENGTH_SHORT).show();
+	        						}        
+	        						Toast.makeText(this, "Publish Success!", Toast.LENGTH_SHORT).show();
+	        						break;
         						
         case R.id.dashitem2:	try {
 					        	String topics[] = { "#" };
